@@ -1,0 +1,59 @@
+/*font-family: 'Raleway', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Rokkitt', serif;*/
+
+/*To disable the button click cursor: not-allowed; */
+body {
+	font-family: 'Raleway', sans-serif;
+
+}
+
+h1 {
+	font-size: 60px;
+}
+
+.guess {
+	font-size: 30px;
+	font-family: 'Oswald', sans-serif;
+	display: block;
+	float: left;
+	padding: 10px;
+	: center;
+}
+
+button:hover {
+	background-color: pink;
+	border: solid 1px black;
+	color: white;
+}
+
+.triviaBox {
+	
+	border: solid 2px black;
+
+}
+
+.panel {
+    background-color: rgb(210, 251, 253);
+    background-color: rgba(210, 251, 253, .9);
+    height: 700px;
+
+}
+
+#header {
+	margin-bottom: 30px;
+	font-family: 'Rokkitt', serif;
+
+}
+#timer {
+	font-weight: bolder;
+
+}
+
+#question {
+
+}
+
+#answers {
+
+}
