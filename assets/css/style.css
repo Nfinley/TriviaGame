@@ -12,13 +12,28 @@ h1 {
 	font-size: 60px;
 }
 
+/*This styles the correct answer when displayed on the answer page*/
+span {
+	font-weight: bolder;
+
+}
+
+img {
+	height: 300px; 
+	width: 500px;
+}
+
+p {
+	font-size: 15px;
+}
 .guess {
-	font-size: 30px;
+	font-size: 20px;
 	font-family: 'Oswald', sans-serif;
 	display: block;
-	float: left;
-	padding: 10px;
-	: center;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	/*width: 200px;*/
 }
 
 button:hover {
@@ -26,6 +41,7 @@ button:hover {
 	border: solid 1px black;
 	color: white;
 }
+
 
 .triviaBox {
 	
@@ -51,9 +67,20 @@ button:hover {
 }
 
 #question {
+	font-size: 25px;
+
 
 }
 
 #answers {
 
+}
+
+#correctAnswer {
+	font-size:25px;
+}
+
+#picture {
+	height: 200px;
+	width: 200px;
 }

@@ -13,10 +13,8 @@
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-   
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway|Rokkitt:400,700" rel="stylesheet">
-
-     <!-- Your style sheet link -->
+    <!-- Your style sheet link -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -31,108 +29,112 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12  text-center" id="header">
-                                <h1> Music History Trivia!</h1>
+                                    <h1> Music History Trivia!</h1>
                                 </div>
                                 <hr>
                                 <!-- For the timer -->
                                 <div class="col-sm-12 col-md-12 col-lg-12 ">
                                     <div id="timer" class="text-center">
                                         <!-- <h3> Time Remaining:  </h3> -->
-                                    <!-- dynamically update the timer here -->
-                                    <!-- id for the start button -->
-                                    <div id="start"> </div>
-                                    <!-- <button class="waves-effect waves-light btn-lg text-center" id="start"> START TRIVIA </button> -->
-                                   </div>
+                                        <!-- dynamically update the timer here -->
+                                        <!-- id for the start button -->
+                                        <div id="start"> </div>
+                                        <!-- <button class="waves-effect waves-light btn-lg text-center" id="start"> START TRIVIA </button> -->
+                                    </div>
                                 </div>
                                 <!-- for the quesitons -->
                                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                   <div id="question">
-                                  <!--  <h2> What is the first name of Mozart's dog?</h2> -->
-                                   </div>
+                                    <div id="question">
+                                        <!--  <h2> What is the first name of Mozart's dog?</h2> -->
+                                    </div>
                                 </div>
                                 <!-- for the answers -->
-                                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                                <div class="col-sm-8 col-md-8 col-lg-8 center-block">
                                     <div id="answers">
-                                   <!-- 
+                                        <!-- 
                                     <p>White Christmas by Bing Crosby </p> -->
-
                                     </div>
+                                    <br>
+                                    <div class="col-sm-2 col-md-2 col-lg-2"></div>
                                     <!-- Where the picture will go on the answer page -->
                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div id="picture">
-                                    <!-- Insert picture here -->
+                                        <div id="correctAnswer"> <!-- This is where the text for correct answer will go if time is up or incorrect answer--></div>
+                                        <div id ="fact"></div>
+                                        <div id="picture">
+                                            <!-- Insert picture here -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-<!-- 
+                        <!-- 
         <button class="waves-effect waves-light btn-lg attackBtn text-center"> BUTTON </button> -->
-        <div id="push"> </div>
-    </div>
-    <div id="footer">
-    </div>
-    <!-- Templating  -->
-    <script type="text/template" id="characterTmpl">
-        <div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
-            <p>
-                <%= character.name %>
-            </p>
-            <img src="<%= character.visual %>">
-            <p>HP:
-                <%= character.healthPoints %>
-            </p>
-        </div>
-    </script>
-    <script type="text/template" id="attackTmpl">
-        <div class="attackText">
-            You attacked
-            <%= gameObj.currentEnemy ? gameObj.currentEnemy.name : gameObj.lastOpponent.name %> for
-                <%= gameObj.yourCurrentAttackPower %> damange!
-                    <br>
-                    <% if (gameObj.currentEnemy) { %>
-                        <%= gameObj.currentEnemy.name %> counter attacked damaging your health by
-                            <%= gameObj.currentEnemy.counterAttackPower %>.
-                                <% } %>
-        </div>
-    </script>
-    <script type="text/template" id="winTmpl">
-        <div class="attackText">
-            You have defeated
-            <%= lastOpponent.name %> , choose another enemy to fight!
-        </div>
-    </script>
-    <script type="text/template" id="lossTmpl">
-        <div class="attackText">
-            <%= gameObj.currentEnemy.name %> has defeated you! Game Over!!
-        </div>
-    </script>
-    <script type="text/template" id="jediTmpl">
-        <div class="attackText">
-            You have defeated
-            <%= lastOpponent.name %>! You are now a true Jedi Master!
-                <br> May the FORCE be with YOU!
-        </div>
-    </script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-    </script>
-    <!-- References the underscore library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- link to user JS file. Name will change -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <!-- link to js file that supports the backstretch piece -->
-    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
-    <!-- Created a background with scrolling images -->
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $.backstretch('assets/images/bg-turn.jpg');
+                        <div id="push"> </div>
+                    </div>
+                    <div id="footer">
+                    </div>
+                    <!-- Templating  -->
+                    <script type="text/template" id="characterTmpl">
+                        <div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
+                            <p>
+                                <%= character.name %>
+                            </p>
+                            <img src="<%= character.visual %>">
+                            <p>HP:
+                                <%= character.healthPoints %>
+                            </p>
+                        </div>
+                    </script>
+                    <script type="text/template" id="attackTmpl">
+                        <div class="attackText">
+                            You attacked
+                            <%= gameObj.currentEnemy ? gameObj.currentEnemy.name : gameObj.lastOpponent.name %> for
+                                <%= gameObj.yourCurrentAttackPower %> damange!
+                                    <br>
+                                    <% if (gameObj.currentEnemy) { %>
+                                        <%= gameObj.currentEnemy.name %> counter attacked damaging your health by
+                                            <%= gameObj.currentEnemy.counterAttackPower %>.
+                                                <% } %>
+                        </div>
+                    </script>
+                    <script type="text/template" id="winTmpl">
+                        <div class="attackText">
+                            You have defeated
+                            <%= lastOpponent.name %> , choose another enemy to fight!
+                        </div>
+                    </script>
+                    <script type="text/template" id="lossTmpl">
+                        <div class="attackText">
+                            <%= gameObj.currentEnemy.name %> has defeated you! Game Over!!
+                        </div>
+                    </script>
+                    <script type="text/template" id="jediTmpl">
+                        <div class="attackText">
+                            You have defeated
+                            <%= lastOpponent.name %>! You are now a true Jedi Master!
+                                <br> May the FORCE be with YOU!
+                        </div>
+                    </script>
+                    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+                    </script>
+                    <!-- References the underscore library -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+                    <!-- Include all compiled plugins (below), or include individual files as needed -->
+                    <!-- Latest compiled and minified JavaScript -->
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+                    <!-- link to user JS file. Name will change -->
+                    <script type="text/javascript" src="assets/javascript/app.js"></script>
+                    <!-- link to js file that supports the backstretch piece -->
+                    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+                    <!-- Created a background with scrolling images -->
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $.backstretch('assets/images/bg-turn.jpg');
 
-    });
-    </script>
+                    });
+                    </script>
 </body>
 
 </html>

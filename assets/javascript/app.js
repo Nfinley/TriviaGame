@@ -1,26 +1,8 @@
 // // Author: Nigel Finley. August 2016. UT Bootcamp Trivia Assisgnment
 
-//             // Once number hits zero...
-//             if (number === 0){
-//                 // ...run the stop function.
-//                 stop();
-//                 // Alert the user that time is up.
-//                 alert('Time Up!')
-//                 // Then display the correct answer 
-//             }
-//         }
-//         // This is the coutdown
-//          setTimeout (timeUp, 1000 *15);
-
-//            function timeUp(){
-//             alert("you have no time left")
-//              $('#time-left').html('Your time is up');
-//             // Once Fifteen seconds pass, time is up! 
-//             // Send an alert and have the "time-left" div let the user know.
-
-//             // The following line will play the audio file you linked to above.
-//             audio.play();
-//         }
+// TODO: 
+    // -Fix the buttons so they display in a block of four two and two instead of stacked
+    // -Get audio to play
 
 
 // Variables: 
@@ -30,10 +12,11 @@ triviaObj = {
 
     masterQuestions: [{
             question: "How old was Mozart when he wrote his first symphony?",
-            answers: [8, 19, 6, 12],
-            correctAnswer: 8,
+            answers: ["8 Years Old", "19 Years Old", "6 Years Old", "12 Years Old"],
+            correctAnswer: "8 Years Old",
             visual: 'assets/images/mozart.jpg',
-            sound: 'assets/audio/mozart.m4a'
+            sound: 'assets/audio/mozart.m4a',
+            fact: "Over his short life span Mozart wrote XX symphonies"
 
         }, 
         {
@@ -41,51 +24,37 @@ triviaObj = {
             answers: ["My Heart Will Go On by Celine Dion", "It's Now Or Never by Elvis Presley", "I Will Survive by Gloria Gaynor", "White Christmas by Bing Crosby"],
             correctAnswer: "White Christmas by Bing Crosby",
             visual: 'assets/images/bing.jpg',
-            sound: "'assets/audio/bing.m4a'"
+            sound: 'assets/audio/bing.m4a',
+            fact: "This single has sold more than ...."
         },
          {
-           question: "What is the name of the man who is considered to be the 'fifth' Beatle, of The Beatles?",
-            answers: ["James", "Bob", "Sir George Henry Martin", "Sir Ben Franklin"],
-            correctAnswer: "Sir George Henry Martin",
-            visual: 'assets/images/george.jpg',
-            sound: "'assets/audio/heyjude.m4a'"
+           question: "What was The Beatles first hit single in America?",
+            answers: ["Twist And Shout", "I Want To Hold Your Hand", "Love Me Do", "I Saw Her Standing There"],
+            correctAnswer: "I Want To Hold Your Hand",
+            visual: 'assets/images/beatles.jpg',
+            sound: 'assets/audio/hand.m4a',
+            fact: "This song was released in 1964..."
+
+        },
+        {
+           question: "What artist has acheived the highest sales in history of an album in its first week?",
+            answers: ["Taylor Swift", "NSYNC", "Adele", "Britney Spears"],
+            correctAnswer: "Adele",
+            visual: 'assets/images/adele.jpg',
+            sound: 'assets/audio/hello.m4a',
+            fact: "Adele sold 3.38 million copies of her album 25 in the first week of its release"
 
         } 
         // {
-        //     question: 
-        //     answers: 
-        //     correctAnswer: 
-        //     visual:
+        //    question: "Streaming question",
+        //     answers: ["Twist And Shout", "I Want To Hold Your Hand", "Love Me Do", "I Saw Her Standing There"],
+        //     correctAnswer: "I Want To Hold Your Hand",
+        //     visual: 'assets/images/beatles.jpg',
+        //     sound: "'assets/audio/hand.m4a'"
+        //     fact: '',
 
-        // } {
-        //     question: 
-        //     answers: 
-        //     correctAnswer: 
-        //     visual:
-
-        // } {
-        //     question: 
-        //     answers: 
-        //     correctAnswer: 
-        //     visual:
-
-        // }
+        // } 
     ],
-
-
-
-    // Set up the timer function (see previous class work for this.) Do a start and stop piece. See set interval and timeout exercises. 
-
-    // Question Page function
-    // This will display: 
-    // 1. New Timer (reset) make sure to reset it
-    // 2. The question pulled from the questions array in order by incrementing by 1 everytime it runs
-    // 3. The answers are populated as well
-
-
-    // create an Answers page function that displays all of the answers. 
-    // It should create a ul li list and then pull the array length of each array below and the dynamically display it on the screen
-    // It needs to also have a reset button to bring you back to the first question
 
     // Push the correct guess here and then get the length of the array and display that number at end
     guessesCorrect: 0,
@@ -94,50 +63,108 @@ triviaObj = {
     guessesIncorrect: 0,
 
     // If the timer goes off before you guess it falls into this catagory
-    // unansweredGuesses: triviaObj.masterQuestions.length - (guessesCorrect + guessesIncorrect),
+    unansweredGuesses: 0, 
+        // unansweredGuesses: triviaObj.masterQuestions.length - (guessesCorrect + guessesIncorrect),
 
     // This will house the current question selected at random and removed from the master question once the masterQuestions array is empty move onto the final answer page
     currentQuestion: [],
 
-    // currentAnswers: [],
+    currentGuess:"",
+
+    userGuess: "",
 
     timerCount: 30,
-
-    // This function populates the question and answers on the page based on the
-    // putQuestion: function(){
-    //     // look into masterQuestions and pull out a random question and then display it on the page
-    //     triviaObj.currentQuestion = triviaObj.randomPick();
-    //     $('#question').html('<h2>' + triviaObj.masterQuestions[0].question + '<h2>');
-    // },
-
-    //     putAnswers: function(){
-
-
-    //     },
-    // // This function will check to see if what was clicked in the userguess array is correct. On user click
-    //     checkAnswer function
-    // loop the userGuess against answer array
-
-
 
     randomPick: function() {
         // var questionIndex= Random.Range(0, (triviaObj.masterQuestions.length -1));
         var initialPick = this.masterQuestions[Math.floor(Math.random() * this.masterQuestions.length)];
-        return initialPick
+        return initialPick;
 
+
+    },
+    answerListener: function(event) {
+        // Need to add the stop counter function here as well 
+
+        // grab id of the user click then compare it to the current answer
+
+        var userguessClick = $(this).html();
+        console.log(userguessClick);
+
+        
+    },
+    // Function to empty currently populated divs with questions and answers
+    emptyDivs: function () {
+        $('#question').empty();
+        $('#answers').empty();
+    },
+
+    // This is the set Timout function that automatically advances the page after the answer page
+      // setTimeout(function() {}, 10);
+      timeOut: function () {
+        setTimeout (fiveSeconds, 1000 *5);
+        // Step 3:
+        // Fill in the blanks to these functions.
+        function fiveSeconds() {
+            alert("Five Seconds have passed");
+            $('#time-left').html('5 Seconds have passed');
+            // Once five seconds pass, send an alert and state the time remaining in the "time-left" div.
+        }
+    }
+
+    // The time up function
+    timesUp: function() {
+        $('#question').html('Times UP!');
+        $('#correctAnswer').html('The Correct Answer Was: ' + '<span>' + triviaObj.currentQuestion[0].correctAnswer + '</span>');
+        console.log(triviaObj.currentQuestion[0].correctAnswer);
+
+        triviaObj.displayAssets();
+        
+        // add the timout function
+
+    } ,      
+// Correct Guess function
+    correctGuess: function() {
+        $('#question').html('Correct!');
+        triviaObj.displayAssets();
+        // Timer also stays at the top of the page
+        // Add the set timout method
+    },
+
+// Incorrect guess function
+    incorrectGuess: function() {
+        $('#question').html('Wrong!');
+        ('#correctAnswer').html('The Correct Answer Was: ' + '<span>' + triviaObj.currentQuestion[0].correctAnswer + '</span>');
+        triviaObj.displayAssets();
+
+        // add the timout function
+    },
+
+// Create displayAssets function to display the selected audio and video assets for the questions guesses. This would be added to win, times up and loss display
+    displayAssets: function(){
+        // Sets the image on the screen
+        var img = $('<img>');
+        img.attr('src', triviaObj.currentQuestion[0].visual);
+        img.attr('class', 'center-block');
+        $('#picture').html(img);
+        
+        // Sets the fun fact
+        $('#fact').html('<p>'+'Fun Fact: ' + triviaObj.currentQuestion[0].fact+ '</p>');;
+        
+
+        // sets the audio on the page
+        // var audio = triviaObj.currentQuestion[0].sound;
+        // // audio.autoplay = true;
+        // // audio.attr('src', triviaObj.currentQuestion[0].sound);
+        // audio.play();
 
     }
 
 
 
-
 }
 
-//Create an array that used as an indexer for your object
-// var indexer=[];
-// for(var i=0;i<masterQuestions.length;++i){
-//     indexer.push(i);
-// }
+// random pick function is not working. 
+
 
 // Initial set up
 // Throw up a start button and when clicked it displays the first question page
@@ -156,31 +183,55 @@ $(document).ready(function() {
     // triviaLoad();
     $('#start').on('click', function(event) {
         $(this).hide();
-        run();
-        // This pushes the random picked question object to the current question array
-        triviaObj.currentQuestion.push(triviaObj.randomPick());
+        // run();
+        // // This pushes the random picked question object to the current question array
+        // triviaObj.currentQuestion.push(triviaObj.randomPick());
 
-        console.log(triviaObj.currentQuestion);
-        $('#question').html('<h2>' + triviaObj.currentQuestion[0].question + '<h2>');
+        // console.log("Current Question: " + JSON.stringify(triviaObj.currentQuestion));
+        // $('#question').html('<h2>' + triviaObj.currentQuestion[0].question + '<h2>');
 
-        // Setting the variable of current answers equal to the answers section with the current question array
-        var currentAnswers = triviaObj.currentQuestion[0].answers
+        // // Setting the variable of current answers equal to the answers section with the current question array
+        // var currentAnswers = triviaObj.currentQuestion[0].answers
 
-        // Ultimately run this in a function
-        var parent = document.getElementById('answers');
+        // // Ultimately run this in a function
+        // var parent = document.getElementById('answers');
 
-        currentAnswers.forEach(function(answer, index, array){
-            var button = document.createElement('button');
-            button.setAttribute('class', 'guess');
-            // USE DATA NAME INSTEAD OF ID
-            // Looks at using .val()
-            var text = document.createTextNode(answer);
-            button.appendChild(text);
-            parent.appendChild(button);
-            // button.on('click', answerListener);
+        // currentAnswers.forEach(function(answer, index, array){
+        //     var button = document.createElement('button');
+        //     button.setAttribute('class', 'guess btn btn-primary center-block');
+        //     // USE DATA NAME INSTEAD OF ID
+        //     // Looks at using .val()
+        //     var text = document.createTextNode(answer);
+        //     button.appendChild(text);
+        //     parent.appendChild(button);
+        //     // button.on('click', answerListener);
 
         }); 
-        $('.guess').on('click', answerListener); 
+        // This initiates the user click/guess after the buttons are created on the screen
+        $('.guess').on('click', triviaObj.answerListener); 
+        // Need to add timer stop (but can only add here after the run function is turned into method)
+        // stop();
+    // it is not getting to here the click is not registering
+        triviaObj.userGuess = triviaObj.answerListener();
+        console.log("This is what you just clicked: " + triviaObj.userGuess);
+        
+         if (triviaObj.userGuess== triviaObj.currentQuestion[0].correctAnswer) {
+            stop();
+            triviaObj.emptyDivs();
+            triviaObj.correctGuess();
+            console.log("This is the user pick: " + triviaObj.answerListener());
+            console.log("This is the correct answer: " + triviaObj.currentQuestion[0].correctAnswer);
+
+     // need to empty all curent ids 
+
+        // call method to run the correct answer page
+
+        // increment the correct guesses  by one
+
+         // call the setTimeout function to stay on this page for 5 seconds before moving on to next page then start timer again
+
+        }     
+       
     
         // splice function to remove the current question object from the array so that it cannot be populated again
         var removeIndex = triviaObj.masterQuestions.indexOf(triviaObj.currentQuestion);
@@ -205,8 +256,17 @@ $(document).ready(function() {
                 // ...run the stop function.
                 // put in the answer page function and stop
                 stop();
+                triviaObj.emptyDivs();
+                triviaObj.timesUp();
+                triviaObj.unansweredGuesses++;
+                var audio = triviaObj.currentQuestion[0].sound;
+        // audio.autoplay = true;
+        // audio.attr('src', triviaObj.currentQuestion[0].sound);
+                audio.play();
+                console.log(triviaObj.unansweredGuesses);
                 // Move to the answer page
             }
+
         }
         // This stops the timer
         function stop() {
@@ -217,54 +277,56 @@ $(document).ready(function() {
         }
 
 
+   //  // incorrect guess
+   // if  (triviaObj.answerListener()!= triviaObj.masterQuestions.correctAnswer) {
+   //          // need to empty all curent ids 
 
+   //          // call method to run the incorrect answer page
 
-        // Set the first question to the page
+   //          // increment the  incorrect guesses  by one
+
+   //           // call the setTimeout function to stay on this page for 5 seconds before moving on to next page then start timer again
+   //  }
+
+   //  // Game is over and display progress
+   //  else if (triviaObj.masterQuestions.length == 0) {
+   //       // need to empty all curent ids 
+
+   //          // call method to to display the totals guesses
+   //          // maybe play success or failure music
+   //          // stop timer
+
+   //  }
+     
+
     });
 
     // STAGE 2: User guesses the answer
-    function answerListener(event) {
-        // Need to add the stop counter function here as well 
+    // Times up scenario
+    // if (triviaObj.timerCount === 0) {
+    //             // ...run the stop function.
+    //             // put in the answer page function and stop
+    //         stop();
+    //         triviaObj.emptyDivs();
+            // need to empty all curent ids 
 
-        // grab id of the user click then compare it to the current answer
+            // call method to run times up answer page
 
-        var userguessClick = $(this).html();
-        console.log(userguessClick);
-        // Or you can take what was clicked and pull the content as a string and then compare it to the correct answer
+            // increment the unanswered by one
 
-        // Scenario 1: timer runs out
-         // if (triviaObj.timerCount === 0) {
-         //        // ...run the stop function.
-         //        // put in the answer page function and stop
-         //        stop();
-         //        // Move to the answer page
-         //    }
-        
-        // Display the text: Times Up!
-        // Then display the correct answer ("The correct answer is: " triviaObj.question.correctAnswer)
-        // Display image or gif
+            // call the setTimeout function to stay on this page for 5 seconds before moving on to next page then start timer again
 
-        // scenario 2: correct guess
-         // if (userguessClick == triviaObj.masterQuestions.correctAnswer)
+    
+    // correct guess
+   
 
 
 
-        // scenario 3:  wrong answer
-
-// Question page
-// Use the quesiton function 
-// To get to the answer page: 
-// Either the timer runs out
-// User selects right asnwer
-// User selects wrong answer
 
 // subsequent questions
 
 // answer pages (3 types): 
-// if user guesses right
-// Display the text: "Correct"
-// Then display the Image or gif
-// Timer also stays at the top of the page
+
 
 // If user guesses wrong
 // Display the text: Incorrect!
@@ -273,7 +335,7 @@ $(document).ready(function() {
 
 
 
-    };
+
 
 
 
@@ -282,9 +344,3 @@ $(document).ready(function() {
 
 });
 
-
-
-
-
-// Final display of answers
-// Timer stops
