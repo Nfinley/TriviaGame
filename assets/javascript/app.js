@@ -12,6 +12,7 @@
 
 
 // Variables: 
+var masterIndex;
 
 triviaObj = {
 
@@ -61,7 +62,6 @@ triviaObj = {
 
         // } 
     ],
-
     // Push the correct guess here and then get the length of the array and display that number at end
     guessesCorrect: 0,
 
@@ -79,24 +79,24 @@ triviaObj = {
 
     userGuess: "",
 
-    timerCount: 31,
+    timerCount: 29,
 
 
     // This function loads the page and loads the timer
     pageLoad: {
         run: function() {
-
             counter = setInterval(this.decrement, 1000);
         },
         // The decremeent function.
         decrement: function() {
-            // Decrease number by one.
-            triviaObj.timerCount--;
+            
             // Show the number in the #show-number tag.
             $('#timer').html('<h2>' + 'Time Remaining: ' + triviaObj.timerCount + ' Seconds </h2>');
+            // Decrease number by one.
+            triviaObj.timerCount--;
 
             // // Once number hits zero...
-            if (triviaObj.timerCount === 0) {
+            if (triviaObj.timerCount === -1) {
                 // ...run the stop function.
                 // put in the answer page function and stop
                 
@@ -104,7 +104,7 @@ triviaObj = {
                 triviaObj.timesUp();
                 triviaObj.unansweredGuesses++;
                 console.log("Unanswered Guesses:" + triviaObj.unansweredGuesses); 
-                triviaObj.splice();
+                triviaObj.spliceArray();
                 // is the timeout function to automatically switch the page
                 triviaObj.pageTimeout.timeout();
 
@@ -154,6 +154,9 @@ triviaObj = {
     },
 
     questionLoad: function() {
+        this.timerCount = 29;
+         // Show the number in the #show-number tag.
+        $('#timer').html('<h2>' + 'Time Remaining: ' + 30 + ' Seconds </h2>');
         this.pageLoad.run();
         // This pushes the random picked question object to the current question array
         this.currentQuestion.push(this.randomPick());
@@ -186,21 +189,25 @@ triviaObj = {
 
     randomPick: function() {
         // var questionIndex= Random.Range(0, (triviaObj.masterQuestions.length -1));
-        var initialPick = this.masterQuestions[Math.floor(Math.random() * this.masterQuestions.length)];
+        masterIndex = Math.floor(Math.random() * this.masterQuestions.length);
+        var initialPick = this.masterQuestions[masterIndex];
+        
+        console.log("Initial Pick: "  + JSON.stringify(initialPick));
         return initialPick;
-        console.log(initialPick);
 
 
     },
 
     // splice function to remove the current question object from the array so that it cannot be populated again
-    splice: function(){      
-        var removeIndex = triviaObj.currentQuestion.indexOf(triviaObj.masterQuestions);
-        console.log("The remove index value is: " + removeIndex);
+    spliceArray: function(){      
+        // var masterIndex = triviaObj.currentQuestion;
+        
         // if (removeIndex != 0) {
-        triviaObj.masterQuestions.splice(removeIndex, 1);
+        triviaObj.masterQuestions.splice(masterIndex, 1);
+        console.log("The remove index value is: " + JSON.stringify(masterIndex));
         console.log("masterQuestions should have been altered! It is now: " + JSON.stringify(triviaObj.masterQuestions));
         console.log("Master Questions length is: " + triviaObj.masterQuestions.length)
+        console.log("Current Question Length: " + triviaObj.currentQuestion.length);
         // }   
     },
     // answerListener: function(event) {
@@ -217,6 +224,8 @@ triviaObj = {
         $('#fact').empty();
         $('#picture').empty();
         $('#correctAnswer').empty();
+        $('#audioplayer').attr('src', '');
+
         
     },
 
@@ -257,13 +266,17 @@ triviaObj = {
         $('#picture').html(img);
         
         // Sets the fun fact
-        $('#fact').html('<h4>'+'Fun Fact: ' + triviaObj.currentQuestion[0].fact+ '</h4>');;
+        $('#fact').html('<h4>'+'Fun Fact: ' + triviaObj.currentQuestion[0].fact+ '</h4>');
         
 
         // sets the audio on the page
-        // var audio = triviaObj.currentQuestion[0].sound;
-        // // audio.autoplay = true;
-        // // audio.attr('src', triviaObj.currentQuestion[0].sound);
+        
+        var audio = triviaObj.currentQuestion[0].sound;
+        // audio.autoplay = true;
+        audioplayer = $('#audioplayer');
+        audioplayer.attr('src', audio);
+        audioplayer.attr('autoplay', 'autoplay');
+       
         // audio.play();
         // <audio src="assets/images/"yourmusic-file.mp3" controls autoplay></audio>
 
@@ -342,7 +355,7 @@ $(document).ready(function() {
             console.log("This is the user pick: " + click);
             console.log("This is the correct answer: " + triviaObj.currentQuestion[0].correctAnswer);
             console.log("Guesses Correct: " + triviaObj.guessesCorrect);
-            triviaObj.splice();
+            triviaObj.spliceArray();
             // is the timeout function to automatically switch the page
             triviaObj.pageTimeout.timeout();
 
@@ -356,7 +369,7 @@ $(document).ready(function() {
             console.log("This is the user pick: " + click);
             console.log("This is the correct answer: " + triviaObj.currentQuestion[0].correctAnswer);
             console.log("Guesses incorrect: " + triviaObj.guessedIncorrect);
-            triviaObj.splice();
+            triviaObj.spliceArray();
              // is the timeout function to automatically switch the page
             triviaObj.pageTimeout.timeout();
 
