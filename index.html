@@ -59,63 +59,21 @@
                                     <div class="col-sm-2 col-md-2 col-lg-2"></div>
                                     <!-- Where the picture will go on the answer page -->
                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                        <div id="correctAnswer"> <!-- This is where the text for correct answer will go if time is up or incorrect answer--></div>
-                                        <div id ="fact"></div>
-                                        <div id="picture">
+                                        <div id="correctAnswer">
+                                            <!-- This is where the text for correct answer will go if time is up or incorrect answer-->
+                                        </div>
+                                        <div id="fact"></div>
+                                        <div id="picture" class = "pictureframe">
                                             <!-- Insert picture here -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- 
-        <button class="waves-effect waves-light btn-lg attackBtn text-center"> BUTTON </button> -->
                         <div id="push"> </div>
                     </div>
                     <div id="footer">
                     </div>
-                    <!-- Templating  -->
-                    <script type="text/template" id="characterTmpl">
-                        <div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
-                            <p>
-                                <%= character.name %>
-                            </p>
-                            <img src="<%= character.visual %>">
-                            <p>HP:
-                                <%= character.healthPoints %>
-                            </p>
-                        </div>
-                    </script>
-                    <script type="text/template" id="attackTmpl">
-                        <div class="attackText">
-                            You attacked
-                            <%= gameObj.currentEnemy ? gameObj.currentEnemy.name : gameObj.lastOpponent.name %> for
-                                <%= gameObj.yourCurrentAttackPower %> damange!
-                                    <br>
-                                    <% if (gameObj.currentEnemy) { %>
-                                        <%= gameObj.currentEnemy.name %> counter attacked damaging your health by
-                                            <%= gameObj.currentEnemy.counterAttackPower %>.
-                                                <% } %>
-                        </div>
-                    </script>
-                    <script type="text/template" id="winTmpl">
-                        <div class="attackText">
-                            You have defeated
-                            <%= lastOpponent.name %> , choose another enemy to fight!
-                        </div>
-                    </script>
-                    <script type="text/template" id="lossTmpl">
-                        <div class="attackText">
-                            <%= gameObj.currentEnemy.name %> has defeated you! Game Over!!
-                        </div>
-                    </script>
-                    <script type="text/template" id="jediTmpl">
-                        <div class="attackText">
-                            You have defeated
-                            <%= lastOpponent.name %>! You are now a true Jedi Master!
-                                <br> May the FORCE be with YOU!
-                        </div>
-                    </script>
                     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
                     </script>

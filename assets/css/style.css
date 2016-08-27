@@ -18,10 +18,10 @@ span {
 
 }
 
-img {
+/*img {
 	height: 300px; 
 	width: 500px;
-}
+}*/
 
 /*p {
 	font-size: 15px;
@@ -53,6 +53,11 @@ p:hover {
     background-color: rgb(210, 251, 253);
     background-color: rgba(210, 251, 253, .9);
     height: 700px;
+
+}
+.pictureframe {
+	height: 300px;
+	width: 450px;
 
 }
 
