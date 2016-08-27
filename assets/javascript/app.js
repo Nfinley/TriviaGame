@@ -22,45 +22,91 @@ triviaObj = {
             answers: ["8 Years Old", "19 Years Old", "6 Years Old", "12 Years Old"],
             correctAnswer: "8 Years Old",
             visual: 'assets/images/mozart.jpg',
-            sound: 'assets/audio/mozart.m4a',
-            fact: "Over his short life span Mozart wrote XX symphonies"
+            sound: 'assets/audio/mozart.mp3',
+            fact: "Over his short life span Mozart wrote 9 symphonies, 32 piano sonatas, one opera, five piano concertos and many chamber works."
 
         }, 
         {
             question: "What is best-selling single of all time?",
             answers: ["My Heart Will Go On by Celine Dion", "It's Now Or Never by Elvis Presley", "I Will Survive by Gloria Gaynor", "White Christmas by Bing Crosby"],
             correctAnswer: "White Christmas by Bing Crosby",
-            visual: 'assets/images/bing.jpg',
-            sound: 'assets/audio/bing.m4a',
-            fact: "This single has sold more than ...."
+            visual: 'assets/images/bing.gif',
+            sound: 'assets/audio/bing.mp3',
+            fact: "This single has sold more than 100 million copies worldwide."
         },
          {
            question: "What was The Beatles first hit single in America?",
             answers: ["Twist And Shout", "I Want To Hold Your Hand", "Love Me Do", "I Saw Her Standing There"],
             correctAnswer: "I Want To Hold Your Hand",
             visual: 'assets/images/beatles.jpg',
-            sound: 'assets/audio/hand.m4a',
-            fact: "This song was released in 1964..."
+            sound: 'assets/audio/beatles.mp3',
+            fact: "This song was released in 1963 and charted at #1 on the US Billboards on January 13, 1964."
 
         },
         {
            question: "What artist has acheived the highest sales in history of an album in its first week?",
             answers: ["Taylor Swift", "NSYNC", "Adele", "Britney Spears"],
             correctAnswer: "Adele",
-            visual: 'assets/images/adele.jpg',
-            sound: 'assets/audio/hello.m4a',
+            visual: 'assets/images/adele.gif',
+            sound: 'assets/audio/hello.mp3',
             fact: "Adele sold 3.38 million copies of her album 25 in the first week of its release"
 
-        } 
-        // {
-        //    question: "Streaming question",
-        //     answers: ["Twist And Shout", "I Want To Hold Your Hand", "Love Me Do", "I Saw Her Standing There"],
-        //     correctAnswer: "I Want To Hold Your Hand",
-        //     visual: 'assets/images/beatles.jpg',
-        //     sound: "'assets/audio/hand.m4a'"
-        //     fact: '',
+        }, 
+        // update from here on
+        {
+           question: "Who was most streamed artist of 2015?",
+            answers: ["Ed Sheeran", "Drake", "Taylor Swift", "Katy Perry"],
+            correctAnswer: "Drake",
+            visual: 'assets/images/drake.gif',
+            sound: "assets/audio/drake.mp3",
+            fact: "Drake's music was streamed over 1.8 billion times in 2015.",
 
-        // } 
+        }, 
+        {
+           question: "What English Rock band from the 1970s had a one armed drummer?",
+            answers: ["The Who", "Def Leppard", "Led Zepplin", "Queen"],
+            correctAnswer: "Def Leppard",
+            visual: 'assets/images/def.gif',
+            sound: "assets/audio/def.mp3",
+            fact: 'The drummer, Rick Allen was involved in a driving accident in 1984 that led to the amputation of his right arm.',
+
+        }, 
+        {
+           question: "What is the first ever rap song to win the Academy Award for Best Original Song?",
+            answers: ["Thrift Shop by Macklemore", "Gansta's Paradise by Coolio", "Lose Yourself by Eminem", "Holy Grail by Jay-z"],
+            correctAnswer: "Lose Yourself by Eminem",
+            visual: 'assets/images/eminem.gif',
+            sound: "assets/audio/eminem.mp3",
+            fact: "Lose Yourself was written in 2002 for the motion picture 8 Mile."
+
+        },
+        {
+           question: "Who was the first American to hear of Joseph Stalin's Death?",
+            answers: ["Dwight Eisenhower", "Johnny Cash", "Tony Blair", "Pat Benatar"],
+            correctAnswer: "Johnny Cash",
+            visual: 'assets/images/johnny.gif',
+            sound: "assets/audio/johnny.mp3",
+            fact: "Johnny was working as a radio operator with the US Airforce intercepting Soviet Army transmissions during the time of Stalin's death and was said to be the first person to receive the message.",
+
+        }, 
+        {
+           question: "What famous song was recorded in only one take?",
+            answers: ["Hey Jude by The Beatles", "All I Want for Christmas is You by Mariah Carey", "My Heart Will Go On by Celine Dion", "The Ocean by Led Zepplin"],
+            correctAnswer: "My Heart Will Go On by Celine Dion",
+            visual: 'assets/images/celine.gif',
+            sound: "assets/audio/celine.mp3",
+            fact: "Intially Celine didn't even want to record this famous love song but where convinced by her husband and producers of film Titantic.",
+
+        },
+        {
+           question: "Who is the youngest artist to win a Grammy Award?",
+            answers: ["Meghan Trainor", "Ed Sheeran", "Taylor Swift", "Bruno Mars"],
+            correctAnswer: "Taylor Swift",
+            visual: 'assets/images/taylor.gif',
+            sound: "assets/audio/taylor.mp3",
+            fact: "Taylor is the youngest artist to win a Grammy at the age of 20 for her album Fearless.",
+
+        }  
     ],
     // Push the correct guess here and then get the length of the array and display that number at end
     guessesCorrect: 0,
@@ -124,7 +170,7 @@ triviaObj = {
     pageTimeout: {
         
         timeout: function() {
-            setTimeout (this.fiveSeconds, 1000 *5);
+            setTimeout (this.fiveSeconds, 1000 *10);
         },
         fiveSeconds: function() {
             triviaObj.emptyDivs();
@@ -287,13 +333,13 @@ triviaObj = {
         $('#question').html('<h2>' + 'Thank you for playing. Here is your game summary: ' + '</h2>');
 
         // display correct guesses
-        $('#answers').html("<p>" + "Correct Geusses: " + triviaObj.guessesCorrect + "</p>");
+        $('#answers').html("<p>" + "Correct Guesses: " + triviaObj.guessesCorrect + "</p>");
        
         // display incorrect guesses
-         $('#answers').append("<p>" + "Incorrect Geusses: " + triviaObj.guessesIncorrect + "</p>");
+         $('#answers').append("<p>" + "Incorrect Guesses: " + triviaObj.guessesIncorrect + "</p>");
 
         // display unanswered guesses
-        $('#answers').append("<p>" + "Unanswered Geusses: " + triviaObj.unansweredGuesses+ "</p>");
+        $('#answers').append("<p>" + "Unanswered Guesses: " + triviaObj.unansweredGuesses+ "</p>");
 
     }
         // var parent = document.getElementById('answers');
