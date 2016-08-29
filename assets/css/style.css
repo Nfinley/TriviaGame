@@ -5,11 +5,40 @@ font-family: 'Rokkitt', serif;*/
 /*To disable the button click cursor: not-allowed; */
 body {
 	font-family: 'Raleway', sans-serif;
+	background-color: rgb(2, 62, 115);
+
 
 }
 
-h1 {
+/*.jumbotron {
+	background-color: transparent;
+	font-family: 'Rokkitt', serif;
 	font-size: 60px;
+	text-align: center;
+	color: #F2F2F2;
+	font-weight: bolder;
+}*/
+
+.startButton {
+	box-shadow: 8px 8px 123px -9px rgba(0,0,0,1);
+	height: 100px;
+	width: 300px;
+	background-color: #F21B42;
+	border-radius: 10px;
+	font-size: 20px;
+	color:#F2F2F2;
+	margin-top: 40px;
+
+
+}
+.startButton:hover {
+	background-color: #FF216A;
+}
+
+h1 {
+	font-size: 80px;
+	/*text-shadow: */
+	margin-bottom: -30px;
 }
 
 /*This styles the correct answer when displayed on the answer page*/
@@ -18,28 +47,33 @@ span {
 
 }
 
-/*img {
-	height: 300px; 
-	width: 500px;
-}*/
-
-/*p {
-	font-size: 15px;
-}*/
-p {
+.guess {
 	font-size: 20px;
 	font-family: 'Oswald', sans-serif;
 	display: block;
 	padding: 20px;
 	margin-bottom: 10px;
 	border-radius: 5px;
-	/*width: 200px;*/
+	background-color: #023E73;
+	color: white;
+	text-align: center;
+	margin: 20px;
+	margin-left: 75px;
+	padding: 20px;
+	width: 40%;
 }
 
-p:hover {
-	background-color: pink;
-	border: solid 1px black;
+.guess:hover {
+	background-color: #F21B42;
+	/*border: solid 1px black;*/
 	color: white;
+}
+
+p {
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Rokkitt', serif;
+
 }
 
 
@@ -50,14 +84,29 @@ p:hover {
 }
 
 .panel {
-    background-color: rgb(210, 251, 253);
-    background-color: rgba(210, 251, 253, .9);
+    background-color: rgb(242,242, 242);
+    background-color: rgba(242,242, 242, .8);
+    /*background-color: transparent;*/
     height: 700px;
+    /*overflow: auto;*/
+    /*margin-top: -50px;*/
 
 }
 .pictureframe {
 	height: 300px;
-	width: 450px;
+	width: 567px;
+	margin-top: 25px;	
+
+}
+
+
+.img-center {
+	margin:0 auto;
+}
+
+.img-fluid {
+	max-width: 100%;
+	height: auto;
 
 }
 
@@ -77,15 +126,8 @@ p:hover {
 
 }
 
-#answers {
-
-}
 
 #correctAnswer {
 	font-size:25px;
 }
 
-#picture {
-	height: 200px;
-	width: 200px;
-}

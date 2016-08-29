@@ -23,8 +23,8 @@
         <!-- Title Header -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-1 col-lg-1 "></div>
-                <div class="col-sm-12 col-md-10 col-lg-10 ">
+                <div class="col-sm-12 col-md-2 col-lg-2 "></div>
+                <div class="col-sm-12 col-md-8 col-lg-8 ">
                     <div class="panel panel-default triviaBox">
                         <div class="panel-body">
                             <div class="row">
@@ -32,58 +32,41 @@
                                     <h1> Music History Trivia!</h1>
                                 </div>
                                 <hr>
-                               <!-- Row of the timer -->
-                                <!-- to house the question count -->
-                                <div class="col-sm-12 col-md-4 col-lg-4 " id="questionCounter"></div>
-                               
-
-                                 <!-- For the timer -->
-                                <div class="col-sm-12 col-md-4 col-lg-4 text-center">
+                                <!-- For the timer -->
+                                <div class="col-sm-12 col-md-12 col-lg-12 ">
                                     <div id="timer" class="text-center">
+                                        <!-- <h3> Time Remaining:  </h3> -->
                                         <!-- dynamically update the timer here -->
-
                                         <!-- id for the start button -->
                                         <div id="start"> </div>
                                         <!-- <button class="waves-effect waves-light btn-lg text-center" id="start"> START TRIVIA </button> -->
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4 "></div> <!-- end timer row -->
-
                                 <!-- for the quesitons -->
                                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                                     <div id="question">
                                         <!--  <h2> What is the first name of Mozart's dog?</h2> -->
                                     </div>
                                 </div>
-
                                 <!-- for the answers -->
-                                <div class="col-sm-12 col-md-12 col-lg-12 center-block">
+                                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                                <div class="col-sm-8 col-md-8 col-lg-8 center-block">
                                     <div id="answers">
-                                   <!--  <p>White Christmas by Bing Crosby </p>  -->
+                                        <!-- 
+                                    <p>White Christmas by Bing Crosby </p> -->
                                     </div>
                                     <br>
                                     <div class="col-sm-2 col-md-2 col-lg-2"></div>
-
-                                    <!-- Correct answer dynamically updated if time up or guessed incorrect -->
+                                    <!-- Where the picture will go on the answer page -->
                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                                         <div id="correctAnswer">
                                             <!-- This is where the text for correct answer will go if time is up or incorrect answer-->
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12 center-block text-center">
                                         <div id="fact"></div>
+                                        <div id="picture" class = "pictureframe">
+                                            <!-- Insert picture here -->
                                         </div>
-
-                                        <!--the row for the picture to make sure it is centered  -->
-                                    <div class="col-sm-12 col-md-3 col-lg-3 center-block text-xs-center"></div>
-                                    <!-- Where the picture will go on the answer page -->
-                                    <div class="col-sm-12 col-md-6 col-lg-6 center-block text-xs-center"  id="picture">
-                                            
-                                                <!-- class = "pictureframe" -->
-                                                <!-- Insert picture here -->
-                                            
                                     </div>
-                                    <div class="col-sm-12 col-md-3 col-lg-3 center-block text-xs-center"></div> <!-- This ends the three columns for the picture-->
                                 </div>
                             </div>
                         </div>
@@ -97,7 +80,6 @@
                     <!-- References the underscore library -->
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
                     <!-- Include all compiled plugins (below), or include individual files as needed -->
-
                     <!-- Latest compiled and minified JavaScript -->
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
                     <!-- link to user JS file. Name will change -->
@@ -108,6 +90,7 @@
                     <script type="text/javascript">
                     $(document).ready(function() {
                         $.backstretch('assets/images/bg-turn.jpg');
+
                     });
                     </script>
                     <audio id="audioplayer"></audio>

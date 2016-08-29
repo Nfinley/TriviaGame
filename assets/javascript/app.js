@@ -1,14 +1,5 @@
 // // Author: Nigel Finley. August 2016. UT Bootcamp Trivia Assisgnment
 
-// TODO: 
-// -Fix the buttons so they display in a block of four two and two instead of stacked
-// -Get audio to play
-// -add gif for the photos instead of static images
-// -change answers to be p tags within bootstrap columns and add backgrounds and box shadows
-
-
-// change the divs at the end to not be hoverable (change the class type)
-
 
 // Variables: 
 
@@ -22,7 +13,7 @@ triviaObj = {
             correctAnswer: "8 Years Old",
             visual: 'assets/images/mozart.jpg',
             sound: 'assets/audio/mozart.mp3',
-            fact: "Over his short life span Mozart wrote 9 symphonies, 32 piano sonatas, one opera, five piano concertos and many chamber works."
+            fact: "Over his short life span Mozart wrote 9 symphonies, 32 piano sonatas, 1 opera, 5 piano concertos and many chamber works."
 
         }, {
             question: "What is best-selling single of all time?",
@@ -45,7 +36,7 @@ triviaObj = {
             correctAnswer: "Adele",
             visual: 'assets/images/adele.gif',
             sound: 'assets/audio/hello.mp3',
-            fact: "Adele sold 3.38 million copies of her album 25 in the first week of its release"
+            fact: "Adele sold 3.38 million copies of her album 25 in the first week of its release."
 
         },
         // update from here on
@@ -79,7 +70,7 @@ triviaObj = {
             correctAnswer: "Johnny Cash",
             visual: 'assets/images/johnny.gif',
             sound: "assets/audio/johnny.mp3",
-            fact: "Johnny was working as a radio operator with the US Airforce intercepting Soviet Army transmissions during the time of Stalin's death and was said to be the first person to receive the message.",
+            fact: "Johnny was working as a radio operator with the US Airforce intercepting Soviet Army transmissions during the time of Stalin's death.",
 
         }, {
             question: "What famous song was recorded in only one take?",
@@ -87,7 +78,7 @@ triviaObj = {
             correctAnswer: "My Heart Will Go On by Celine Dion",
             visual: 'assets/images/celine.gif',
             sound: "assets/audio/celine.mp3",
-            fact: "Intially Celine didn't even want to record this famous love song but where convinced by her husband and producers of film Titantic.",
+            fact: "Intially Celine didn't even want to record this famous love song but was convinced by her husband and producers of film Titantic.",
 
         }, {
             question: "Who is the youngest artist to win a Grammy Award?",
@@ -116,7 +107,7 @@ triviaObj = {
 
     userGuess: "",
 
-    timerCount: 29,
+    timerCount: 14,
 
     masterIndex: "",
 
@@ -129,15 +120,12 @@ triviaObj = {
         decrement: function() {
 
             // Show the number in the #show-number tag.
-            $('#timer').html('<h2>' + 'Time Remaining: ' + triviaObj.timerCount + ' Seconds </h2>');
+            $('#timer').html('<h2>' + 'Time Remaining: ' + triviaObj.timerCount + '</h2>');
             // Decrease number by one.
             triviaObj.timerCount--;
 
             // // Once number hits zero...
             if (triviaObj.timerCount === -1) {
-                // ...run the stop function.
-                // put in the answer page function and stop
-
                 triviaObj.emptyDivs();
                 triviaObj.timesUp();
                 triviaObj.unansweredGuesses++;
@@ -145,8 +133,6 @@ triviaObj = {
                 triviaObj.spliceArray();
                 // is the timeout function to automatically switch the page
                 triviaObj.pageTimeout.timeout();
-
-                // Move to the answer page
             }
 
         },
@@ -162,7 +148,7 @@ triviaObj = {
     pageTimeout: {
 
         timeout: function() {
-            setTimeout(this.fiveSeconds, 1000 * 10);
+            setTimeout(this.fiveSeconds, 1000 * 7);
         },
         fiveSeconds: function() {
             triviaObj.emptyDivs();
@@ -178,8 +164,6 @@ triviaObj = {
 
             } else {
                 triviaObj.questionLoad();
-                // this resetart is not working
-                // triviaObj.timerReset();
             }
         }
     },
@@ -187,13 +171,13 @@ triviaObj = {
     timerReset: function() {
         var timerCount = 0;
         return timerCount;
-        $('#timer').html('<h2>' + 'Time Remaining: ' + triviaObj.timerCount + ' Seconds </h2>');
+        $('#timer').html('<h2>' + 'Time Remaining: ' + triviaObj.timerCount + '</h2>');
     },
 
     questionLoad: function() {
-        this.timerCount = 29;
+        this.timerCount = 14;
         // Show the number in the #show-number tag.
-        $('#timer').html('<h2>' + 'Time Remaining: ' + 30 + ' Seconds </h2>');
+        $('#timer').html('<h2>' + 'Time Remaining: ' + 15 + '</h2>');
         this.pageLoad.run();
         // This pushes the random picked question object to the current question array
         this.currentQuestion.push(this.randomPick());
@@ -210,22 +194,22 @@ triviaObj = {
         //  a for each function that runs for every answer in the array
         currentAnswers.forEach(function(answer, index, array) {
             // creates a p element
-            var p = document.createElement('p');
+            var div = document.createElement('div');
             // Add other classes to update the background
-            p.setAttribute('class', 'guess center-block');
+            div.setAttribute('class', 'col-sm-12 col-md-6 col-lg-6 guess center-block');
 
             // storing creating a text node of answer in text
             var text = document.createTextNode(answer);
             // appending text to the previously created p tag
-            p.appendChild(text);
+            div.appendChild(text);
             // appending the child to the parent in this case the p tag to the parent variable
-            parent.appendChild(p);
+            parent.appendChild(div);
 
         });
     },
-
+    // Randomly picks the next question
     randomPick: function() {
-        // var questionIndex= Random.Range(0, (triviaObj.masterQuestions.length -1));
+        
         this.masterIndex = Math.floor(Math.random() * this.masterQuestions.length);
         var initialPick = this.masterQuestions[this.masterIndex];
 
@@ -237,23 +221,14 @@ triviaObj = {
 
     // splice function to remove the current question object from the array so that it cannot be populated again
     spliceArray: function() {
-        // var masterIndex = triviaObj.currentQuestion;
-
-        // if (removeIndex != 0) {
         triviaObj.masterQuestions.splice(this.masterIndex, 1);
         console.log("The remove index value is: " + JSON.stringify(this.masterIndex));
         console.log("masterQuestions should have been altered! It is now: " + JSON.stringify(triviaObj.masterQuestions));
         console.log("Master Questions length is: " + triviaObj.masterQuestions.length)
         console.log("Current Question Length: " + triviaObj.currentQuestion.length);
-        // }   
+        
     },
-    // answerListener: function(event) {
-    //     // grab id of the user click then compare it to the current answer
-    //     var userguessClick = $(this).text();
-    //     console.log("log within the function: " + userguessClick);
 
-
-    // },
     // Function to empty currently populated divs with questions and answers
     emptyDivs: function() {
         $('#question').empty();
@@ -275,15 +250,14 @@ triviaObj = {
 
         triviaObj.displayAssets();
         triviaObj.pageLoad.stop();
-        // add the timout function
+ 
 
     },
     // Correct Guess function
     correctGuess: function() {
         $('#question').attr('style', 'font-size: 40px;').html('Correct!');
         triviaObj.displayAssets();
-        // Timer also stays at the top of the page
-        // Add the set timout method
+
     },
 
     // Incorrect guess function
@@ -292,7 +266,6 @@ triviaObj = {
         $('#correctAnswer').html('The Correct Answer Is: ' + '<span>' + triviaObj.currentQuestion[0].correctAnswer + '</span>');
         triviaObj.displayAssets();
 
-        // add the timout function
     },
 
     // Create displayAssets function to display the selected audio and video assets for the questions guesses. This would be added to win, times up and loss display
@@ -300,7 +273,8 @@ triviaObj = {
         // Sets the image on the screen
         var img = $('<img>');
         img.attr('src', triviaObj.currentQuestion[0].visual);
-        img.attr('class', 'pictureframe center-block');
+        img.attr('class', 'img-rounded m-x-auto d-block pictureframe');
+        img.attr('alt', 'Image');
         $('#picture').html(img);
 
         // Sets the fun fact
@@ -314,9 +288,6 @@ triviaObj = {
         audioplayer = $('#audioplayer');
         audioplayer.attr('src', audio);
         audioplayer.attr('autoplay', 'autoplay');
-
-        // audio.play();
-        // <audio src="assets/images/"yourmusic-file.mp3" controls autoplay></audio>
 
     },
 
@@ -334,24 +305,8 @@ triviaObj = {
             $('#answers').append("<p>" + "Unanswered Guesses: " + triviaObj.unansweredGuesses + "</p>");
 
         }
-        // var parent = document.getElementById('answers');
-        // var p = document.createElement('p');
-        //     // Add other classes to update the background
-        //     p.setAttribute('class', 'guess center-block');
-        //     // USE DATA NAME INSTEAD OF ID
-        //     // Looks at using .val()
-        //     var text = document.createTextNode(answer);
-        //     p.appendChild(text);
-
-    //     parent.appendChild(p);
-
-
-
-
+   
 }
-
-// random pick function is not working. 
-
 
 // GAME BEGINS with Initial setup of page and start click push
 
@@ -359,8 +314,8 @@ triviaObj = {
 $(document).ready(function() {
     // Intial page load with the button created dynamically
     var b = $('<button>');
-    b.addClass('waves-effect waves-light btn-lg text-center');
-    b.html('START TRIVIA!');
+    b.addClass('waves-effect waves-light btn-lg text-center startButton');
+    b.html('START!');
 
     $('#start').append(b);
 
