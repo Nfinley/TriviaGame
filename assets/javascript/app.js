@@ -1,5 +1,14 @@
 // // Author: Nigel Finley. August 2016. UT Bootcamp Trivia Assisgnment
 
+// TODO: 
+// -Fix the buttons so they display in a block of four two and two instead of stacked
+// -change answers to be p tags within bootstrap columns and add backgrounds and box shadows
+// change the divs at the end to not be hoverable (change the class type)
+// totally restructre site from a design perspective
+// -After Joanne test case: 
+    // put the number of questions left in the corner (ie 1/10, 2/10 etc. )
+
+
 
 // Variables: 
 
