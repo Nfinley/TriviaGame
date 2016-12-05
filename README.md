@@ -1,3 +1,9 @@
-# TriviaGame
+# Music History Trivia Game
 
-This is a trivia game with the theme of music history created during the 5th week of the UT Austin Coding Bootcamp. 
+Think you know music? Test your skills with this basic music trivia game. It is built in Javascript, uses the Bootstrap framework and makes use of timer logic. 
+
+[Test your skills](https://musictrivia.herokuapp.com/)
+
+
+----
+_Created as a part of the UT Coding Bootcamp._
